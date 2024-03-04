@@ -1,10 +1,4 @@
-# Elixir Bootcamp
-
-```elixir
-Mix.install([
-  {:kino, "~> 0.12.0"}
-])
-```
+# Elixir Bootcamp - Introduction
 
 ## Introduction
 
@@ -185,9 +179,7 @@ Lasagna.alarm()
 # => "Ding!"
 ```
 
-<!-- livebook:{"break_markdown":true} -->
-
-### Implementation
+## Implementation
 
 ```elixir
 defmodule Lasagna do
@@ -255,3 +247,5 @@ end
 
 ExUnit.run()
 ```
+
+[Next Page](booleans.livemd)
