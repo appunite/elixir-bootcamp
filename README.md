@@ -4,4 +4,4 @@
 
 ## Installation
 
-* `asdf install`
+- `asdf install`
