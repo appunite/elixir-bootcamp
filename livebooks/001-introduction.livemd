@@ -21,6 +21,35 @@ count = false
 message = "Success!"
 ```
 
+### Strings
+
+[Strings][getting-started-strings] in Elixir are delimited by double quotes, and they are encoded in UTF-8:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+"Hi!"
+```
+
+Strings can be concatenated using the [`<>/2`][kernel-concat] operator:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+"Welcome to" <> " " <> "New York"
+# => "Welcome to New York"
+```
+
+Strings in Elixir support [interpolation][string-interpolation] using the `#{}` syntax:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+result = 6 * 7
+"The result is #{result}"
+# => "The result is 42"
+```
+
 ### Modules
 
 Elixir is a [functional-programming language][functional-programming] and requires all named functions to be defined in a _module_.The `defmodule` keyword is used to define a module.
@@ -168,15 +197,15 @@ Lasagna.total_time_in_minutes(3, 20)
 # => 26
 ```
 
-### 5. Create a notification that the lasagna is ready
+### 5. Create a function which displays the notification message with remaining time
 
-Define the `Lasagna.alarm/0` function that does not take any arguments and returns a message indicating that the lasagna is ready to eat.
+Define the `Lasagna.alarm/1` function that takes remaining time and returns pretty information for user with information of remaining time
 
 <!-- livebook:{"force_markdown":true} -->
 
 ```elixir
-Lasagna.alarm()
-# => "Ding!"
+Lasagna.alarm(40)
+# => "Lasagna will be ready in 40 minutes"
 ```
 
 ## Implementation
@@ -191,7 +220,7 @@ defmodule Lasagna do
 
   # Please define the 'total_time_in_minutes/2' function
 
-  # Please define the 'alarm/0' function
+  # Please define the 'alarm/1' function
 end
 ```
 
@@ -241,7 +270,7 @@ defmodule LasagnaTest do
 
   @tag task_id: 5
   test "notification message" do
-    assert Lasagna.alarm() === "Ding!"
+    assert Lasagna.alarm(40) === "Lasagna will be ready in 40 minutes"
   end
 end
 
