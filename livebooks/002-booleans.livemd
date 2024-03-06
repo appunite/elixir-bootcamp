@@ -195,5 +195,5 @@ end
 ExUnit.run()
 ```
 
-[Previous Page](introduction.livemd)
-[Next Page](integer_floats.livemd)
+[Previous Page](001-introduction.livemd)
+[Next Page](003-integer_floats.livemd)

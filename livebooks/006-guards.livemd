@@ -188,5 +188,5 @@ end
 ExUnit.run()
 ```
 
-[Previous Page](atoms_cond.livemd)
-[Next page](tuples_pattern_matching.livemd)
+[Previous Page](005-atoms_cond.livemd)
+[Next page](007-tuples_pattern_matching.livemd)

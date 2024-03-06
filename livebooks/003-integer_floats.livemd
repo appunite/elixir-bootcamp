@@ -258,5 +258,5 @@ end
 ExUnit.run()
 ```
 
-[Previous Page](booleans.livemd)
-[Next Page](lists.livemd)
+[Previous Page](002-booleans.livemd)
+[Next Page](004-lists.livemd)
