@@ -6,8 +6,6 @@
 
 Elixir's `atom` type represents a fixed constant. An atom's value is simply its own name. This gives us a type-safe way to interact with data. Atoms can be defined as follows:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 # All atoms are preceded with a ':' then follow with alphanumeric snake-cased characters
 variable = :an_atom
@@ -21,9 +19,10 @@ Often, we want to write code that can branch based on a condition. While there a
 
 At its simplest, `cond` follows the first path that evaluates to `true` with one or more branches:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
+x = 5
+y = 7
+
 cond do
   x > 10 -> :this_might_be_the_way
   y < 7 -> :or_that_might_be_the_way
@@ -36,11 +35,9 @@ If no path evaluates to `true`, an error is raised by the runtime.
 
 ### If
 
-Besides `cond`, Elixir also provides the macro [`if/2`][getting-started-if-unless] which is useful when you need to check for only one condition.
+Besides `cond`, Elixir also provides the macro [`if/2`](https://hexdocs.pm/elixir/case-cond-and-if.html#if-unless) which is useful when you need to check for only one condition.
 
-[`if/2`][kernel-if] accepts a condition and two options. It returns the first option if the condition is _truthy_, and the second option if the condition is _falsy_.
-
-<!-- livebook:{"force_markdown":true} -->
+[`if/2`](https://hexdocs.pm/elixir/Kernel.html#if/2) accepts a condition and two options. It returns the first option if the condition is _truthy_, and the second option if the condition is _falsy_.
 
 ```elixir
 age = 15
@@ -55,8 +52,6 @@ end
 ```
 
 It is also possible to write an `if` expression on a single line. Note the comma after the condition.
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 if age > 16, do: "beer", else: "no beer"

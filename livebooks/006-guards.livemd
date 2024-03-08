@@ -8,16 +8,18 @@ Elixir facilitates **Open-Closed Principle** practices by allowing functions to 
 
 Elixir offers _multiple function clauses_ and _guards_ to write:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
-def number(n) when n == 7 do
-  "Awesome, that's my favorite"
+defmodule Guess do
+  def number(n) when n == 7 do
+    "Awesome, that's my favorite"
+  end
+
+  def number(_n) do
+    "That's not my favorite"
+  end
 end
 
-def number(_n) do
-  "That's not my favorite"
-end
+Guess.number(5)
 ```
 
 At run-time, Elixir will test, from top to bottom of the source file, which function clause to invoke.
@@ -31,7 +33,7 @@ Guards are used to prevent Elixir from invoking functions based on evaluation of
 * Must be pure and not mutate any global states.
 * Must return strict `true` or `false` values.
 
-A list of common guards can be found in the [Elixir documentation][kernel-guards]. It includes type checks, basic arithmetic, comparisons, and strictly boolean operators.
+A list of common guards can be found in the [Elixir documentation](https://hexdocs.pm/elixir/Kernel.html#guards). It includes type checks, basic arithmetic, comparisons, and strictly boolean operators.
 
 ### Default Arguments
 
@@ -42,6 +44,8 @@ Functions may declare default values for one or more arguments. Let's consider t
 ```elixir
 def number(n \\ 13), do: "That's not my favorite"
 ```
+
+<!-- livebook:{"break_markdown":true} -->
 
 When compiled, Elixir creates a function definition for `number/0` (no arguments), and `number/1` (one argument).
 

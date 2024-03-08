@@ -6,26 +6,20 @@
 
 Keyword lists are a key-value data structure.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 [month: "April", year: 2018]
 ```
 
-Keyword lists are lists of `{key, value}` [tuples][exercism-tuples], and can also be written as such, but the shorter syntax is more widely used.
-
-<!-- livebook:{"force_markdown":true} -->
+Keyword lists are lists of `{key, value}` [tuples](https://elixirschool.com/en/lessons/basics/collections#tuples-4), and can also be written as such, but the shorter syntax is more widely used.
 
 ```elixir
 [month: "April"] == [{:month, "April"}]
 # => true
 ```
 
-Keys in a keyword list must be [atoms][exercism-atoms], but the values can be anything. Each key can be used more than once. The key-value pairs in a keyword list are ordered.
+Keys in a keyword list must be `atoms`, but the values can be anything. Each key can be used more than once. The key-value pairs in a keyword list are ordered.
 
 You can work with keyword lists using the same approaches as for lists, or you can use the `Keyword` module.
-
-<!-- livebook:{"break_markdown":true} -->
 
 ### Maps
 
@@ -41,8 +35,6 @@ If the key is an `atom` we can use a shorthand syntax. Maps do not guarantee the
 
 An empty map is simply declared with `%{}`. If we want to add items to a map literal, we can use two forms:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 # If the key is an atom:
 %{atom_key: 1}
@@ -56,9 +48,7 @@ An empty map is simply declared with `%{}`. If we want to add items to a map lit
 
 ### Map module functions
 
-Elixir provides many functions for working with maps in the [Map module][map-module]. Some _Map module_ functions require an _anonymous_ function to be passed into the function to assist with the map transformation.
-
-<!-- livebook:{"force_markdown":true} -->
+Elixir provides many functions for working with maps in the [Map module](https://hexdocs.pm/elixir/Map.html). Some _Map module_ functions require an _anonymous_ function to be passed into the function to assist with the map transformation.
 
 ```elixir
 # You can turn existing Enumerable into Map
@@ -73,7 +63,6 @@ Map.delete(map, :a)
 # => %{b: 2}
 
 Map.put(map, :c, 3)
-# => %{b: 2, c: 3}
 ```
 
 ### Keyword lists vs maps
@@ -429,4 +418,4 @@ ExUnit.run()
 ```
 
 [Previous Page](008-recursion.livemd)
-[Next Page](010-structs.livemd)
+[Next Page](010-structs_pipe.livemd)

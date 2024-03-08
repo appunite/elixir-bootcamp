@@ -4,29 +4,29 @@
 
 `Enum` is a very useful module that provides a set of algorithms for working with enumerables. It offers:
 
-* sorting ([`sort/2`][enum-sort/2], [`sort_by/2`][enum-sort_by/2]),
-* filtering ([`filter/2`][enum-filter/2]),
-* grouping ([`group_by/3`][enum-group_by/3]),
-* counting ([`count/2`][enum-count/2])
-* searching ([`find/3`][enum-find/3]),
-* finding min/max values ([`min/3`][enum-min/3], [`max/3`][enum-max/3]),
-* reducing ([`reduce/3`][enum-reduce/3], [`reduce_while/3`][enum-reduce_while/3]),
+* sorting ([`sort/2`](https://hexdocs.pm/elixir/Enum.html#sort/2), [`sort_by/2`](https://hexdocs.pm/elixir/Enum.html#sort_by/2)),
+* filtering ([`filter/2`](https://hexdocs.pm/elixir/Enum.html#filter/2)),
+* grouping ([`group_by/3`](https://hexdocs.pm/elixir/Enum.html#group_by/3)),
+* counting ([`count/2`](https://hexdocs.pm/elixir/Enum.html#count/2))
+* searching ([`find/3`](https://hexdocs.pm/elixir/Enum.html#find/3)),
+* finding min/max values ([`min/3`](https://hexdocs.pm/elixir/Enum.html#min/3), [`max/3`](https://hexdocs.pm/elixir/Enum.html#max/3)),
+* reducing ([`reduce/3`](https://hexdocs.pm/elixir/Enum.html#reduce/3), [`reduce_while/3`](https://hexdocs.pm/elixir/Enum.html#reduce_while/3)),
 
-And much more! Refer to the [`Enum` module documentation][enum-functions] for a full list.
+And much more! Refer to the [`Enum` module documentation](https://hexdocs.pm/elixir/Enum.html#functions) for a full list.
 
 ### Enumerable
 
-In general, an _enumerable_ is any data that can be iterated over, a collection. In Elixir, an enumerable is any data type that implements the `Enumerable` [protocol][exercism-protocols]. Those are:
+In general, an _enumerable_ is any data that can be iterated over, a collection. In Elixir, an enumerable is any data type that implements the `Enumerable` protocol. Those are:
 
-* [`List`][list]
-* [`Map`][map]
-* [`Range`][range]
-* [`Stream`][stream]
-* [`MapSet`][mapset]
-* [`Function`][function]
-* [`Date.Range`][date-range]
-* [`IO.Stream`][io-stream]
-* [`File.Stream`][file-stream]
+* [`List`](https://hexdocs.pm/elixir/List.html)
+* [`Map`](https://hexdocs.pm/elixir/Map.html)
+* [`Range`](https://hexdocs.pm/elixir/Map.html)
+* [`Stream`](https://hexdocs.pm/elixir/Stream.html)
+* [`MapSet`](https://hexdocs.pm/elixir/MapSet.html)
+* [`Function`](https://hexdocs.pm/elixir/Function.html)
+* [`Date.Range`](https://hexdocs.pm/elixir/Date.Range.html)
+* [`IO.Stream`](https://hexdocs.pm/elixir/IO.Stream.html)
+* [`File.Stream`](https://hexdocs.pm/elixir/File.Stream.html)
 
 Don't worry if you don't know them all yet.
 
@@ -35,8 +35,6 @@ Anyone can implement the `Enumerable` protocol for their own custom data structu
 ### Map
 
 `Enum.map/2` allows you to replace every element in an enumerable with another element. The second argument to `Enum.map/2` is a function that accepts the original element and returns its replacement.
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 Enum.map([1, 2, 3], fn x -> x * 2 end)
@@ -51,8 +49,6 @@ Enum.map([a: 1, b: 2], fn {k, v} -> {k, -v} end)
 `Enum.reduce/2` allows you to _reduce_ the whole enumerable to a single value. To achieve this, a special variable called the _accumulator_ is used. The accumulator carries the intermediate state of the reduction between iterations. This makes it one of the most powerful functions for enumerables. Many other specialized functions could be replaced by the more general `reduce`.
 
 Finding the maximum value:
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 Enum.max([4, 20, 31, 9, 2])
@@ -73,14 +69,10 @@ end)
 
 When using maps with `Enum` functions, the map gets automatically converted to a list of 2 `{key, value}` tuples. To transform it back to a map, use `Enum.into/2`.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
-%{a: 1, b: 2, c: 3}
+%{a: 1, b: 2, e: 3}
 |> Enum.map(fn {key, value} -> {key, value * 10} end)
 |> Enum.into(%{})
-
-# => %{a: 10, b: 20, c: 30}
 ```
 
 ## Exercise - Boutique Inventory

@@ -8,8 +8,6 @@ There are two different kinds of numbers in Elixir - integers and floats.
 
 Integers are whole numbers.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 integer = 3
 # => 3
@@ -19,8 +17,6 @@ integer = 3
 
 Floats are numbers with one or more digits behind the decimal separator. They use the 64-bit double precision floating-point format.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 float = 3.45
 # => 3.45
@@ -28,13 +24,11 @@ float = 3.45
 
 ### Working with numbers
 
-In the [`Integer`][integer-functions] and [`Float`][float-functions] modules you can find some useful functions for working with those types. Basic arithmetic operators are defined in the [`Kernel`][kernel-arithmetic-operators] module.
+In the [`Integer`](https://hexdocs.pm/elixir/Integer.html#functions) and [`Float`](https://hexdocs.pm/elixir/Float.html#functions) modules you can find some useful functions for working with those types. Basic arithmetic operators are defined in the [`Kernel`](https://hexdocs.pm/elixir/Kernel.html#*/2) module.
 
 ### Conversion
 
 Integers and floats can be mixed together in a single arithmetic expression. Using a float in an expression ensures the result will be a float too.
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 2 * 3
@@ -46,8 +40,6 @@ Integers and floats can be mixed together in a single arithmetic expression. Usi
 
 However, when doing division, the result will always be a float, even if only integers are used.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 6 / 2
 # => 3.0
@@ -55,11 +47,9 @@ However, when doing division, the result will always be a float, even if only in
 
 Floats can be rounded (`round`), rounded up (`ceil`), or rounded down (`floor`).
 
-To round a float into a float, use functions from the `Float` module ([`Float.round`][float-round], [`Float.ceil`][float-ceil], [`Float.floor`][float-floor]). To get an integer instead, use functions from the `Kernel` module ([`round`][kernel-round], [`ceil`][kernel-ceil], [`floor`][kernel-floor]).
+To round a float into a float, use functions from the `Float` module ([`Float.round`](https://hexdocs.pm/elixir/Float.html#round/2), [`Float.ceil`](https://hexdocs.pm/elixir/Float.html#ceil/2), [`Float.floor`](https://hexdocs.pm/elixir/Float.html#floor/2)). To get an integer instead, use functions from the `Kernel` module ([`round`](https://hexdocs.pm/elixir/Kernel.html#round/1), [`ceil`](https://hexdocs.pm/elixir/Kernel.html#ceil/1), [`floor`](https://hexdocs.pm/elixir/Kernel.html#floor/1)).
 
-Another method of changing a float into an integer is cutting off its decimal part with [`trunc`][kernel-trunc].
-
-<!-- livebook:{"force_markdown":true} -->
+Another method of changing a float into an integer is cutting off its decimal part with [`trunc`](https://hexdocs.pm/elixir/Kernel.html#trunc/1).
 
 ```elixir
 Float.ceil(5.2)

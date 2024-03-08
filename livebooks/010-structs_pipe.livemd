@@ -2,29 +2,29 @@
 
 ## Introduction
 
-[Structs][getting-started] are special [maps][maps] with a defined set of keys.
+[Structs](https://hexdocs.pm/elixir/structs.html) are special [maps](https://hexdocs.pm/elixir/Map.html#content) with a defined set of keys.
 
 * Structs provide compile-time checks and default values.
 * A struct is named after the module it is defined in.
-* To define a struct use the [`defstruct`][docs-defstruct] construct.
+* To define a struct use the [`defstruct`](https://hexdocs.pm/elixir/Kernel.html#defstruct/1) construct.
   * The construct usually immediately follows after the module definition.
-* `defstruct` accepts either a list of [atoms][atom] (for nil default values) or keyword lists (for specified default values).
+* `defstruct` accepts either a list of `atoms` (for nil default values) or `keyword lists` (for specified default values).
   * The fields without defaults must precede the fields with default values.
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 defmodule Plane do
   defstruct [:engine, wings: 2, seats: 4]
 end
+```
 
+```elixir
 plane = %Plane{}
 # => %Plane{engine: nil, wings: 2, seats: 4}
 ```
 
 ### Accessing fields and updating
 
-* Most functions that work with [maps][maps] will also work with structs.
+* Most functions that work with `maps` will also work with structs.
 
 * It is recommended to use the _static access operator_ `.` to access struct fields.
 
@@ -48,29 +48,25 @@ plane = %Plane{}
 
 ### Enforcing field value initialization
 
-* The [`@enforce_keys` module attribute][enforcing-keys] creates a run-time check that specified fields must be initialized to a **non**-`nil` value when the struct is created.
-* `@enforce_keys` is followed by a list of the field keys (which are [atoms][atom]).
+* The [`@enforce_keys` module attribute](https://hexdocs.pm/elixir/Kernel.html#defstruct/1-enforcing-keys) creates a run-time check that specified fields must be initialized to a **non**-`nil` value when the struct is created.
+* `@enforce_keys` is followed by a list of the field keys (which are atoms).
 * If an enforced key is not initialized, an error is raised.
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 defmodule User do
   @enforce_keys [:username]
   defstruct [:username]
 end
+```
 
+```elixir
 %User{}
 # => (ArgumentError) the following keys must also be given when building struct User: [:username]
 ```
 
-<!-- livebook:{"break_markdown":true} -->
-
 ### Pipe Operator
 
-The `|>` operator is called [the pipe operator][pipe]. It can be used to chain function calls together in such a way that the value returned by the previous function call is passed as the first argument to the next function call.
-
-<!-- livebook:{"force_markdown":true} -->
+The `|>` operator is called [the pipe operator](https://hexdocs.pm/elixir/Kernel.html#%7C%3E/2). It can be used to chain function calls together in such a way that the value returned by the previous function call is passed as the first argument to the next function call.
 
 ```elixir
 String.replace_suffix(String.upcase(String.duplicate("go ", 3)), " ", "!")
@@ -84,8 +80,6 @@ String.replace_suffix(String.upcase(String.duplicate("go ", 3)), " ", "!")
 ```
 
 It can also be used on a single line:
-
-<!-- livebook:{"force_markdown":true} -->
 
 ```elixir
 "go " |> String.duplicate(3) |> String.upcase() |> String.replace_suffix(" ", "!")

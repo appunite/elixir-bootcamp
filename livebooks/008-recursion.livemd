@@ -10,34 +10,41 @@ A _base case_ returns a value without calling the function again. A _recursive c
 
 Very often, each case is written in its own function clause.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
-# base case
-def count([]), do: 0
+defmodule Counter do
+  # base case
+  def call([]), do: 0
 
-# recursive case
-def count([_head | tail]), do: 1 + count(tail)
+  # recursive case
+  def call([_head | tail]), do: 1 + call(tail)
+end
+
+Counter.call(["a", 1, 2, "c", "apple"])
 ```
 
-A recursive function can have many base cases and/or many recursive cases. For example [the Fibonacci sequence][fibonacci] is a recursive sequence with two base cases:
-
-<!-- livebook:{"force_markdown":true} -->
+A recursive function can have many base cases and/or many recursive cases. For example [the Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_number) is a recursive sequence with two base cases:
 
 ```elixir
-def fibonacci(0), do: 0
-def fibonacci(1), do: 1
-def fibonacci(n), do: fibonacci(n - 1) + fibonacci(n - 2)
+defmodule Fibbonacci do
+  def call(0), do: 0
+  def call(1), do: 1
+  def call(n), do: call(n - 1) + call(n - 2)
+end
+
+Fibbonacci.call(10)
 ```
 
 Counting the number of occurrences of some given value `x` in a list has two recursive cases:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
-def count_occurrences([], _x), do: 0
-def count_occurrences([x | tail], x), do: 1 + count_occurrences(tail, x)
-def count_occurrences([_ | tail], x), do: count_occurrences(tail, x)
+defmodule CounterPremium do
+  def count_occurrences([], _x), do: 0
+  def count_occurrences([x | tail], x), do: 1 + count_occurrences(tail, x)
+  def count_occurrences([_ | tail], x), do: count_occurrences(tail, x)
+end
+
+CounterPremium.count_occurrences([1, 2, 3, 1, 4, 1], 1)
+# => 3
 ```
 
 ### Loops through recursion
@@ -54,39 +61,41 @@ In a functional language, mutating `i` (by calling `i++`) is not possible. Thus,
 
 The equivalent of a `for` loop in Elixir would look like this:
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
-def loop([]), do: nil
+defmodule ElixirForLoop do
+  def loop([]), do: nil
 
-def loop([head | tail]) do
-  do_something(head)
-  loop(tail)
+  def loop([head | tail]) do
+    do_something(head)
+    loop(tail)
+  end
+
+  def do_something(element) do
+    IO.inspect(element)
+  end
 end
+
+ElixirForLoop.loop([1, 2, 3, 4, 5])
 ```
 
-In practice, iterating over lists and other enumerable data structures is most often done using the [`Enum`][module-enum] module. Under the hood, functions from the `Enum` module are [implemented using recursion][enumerable-list-reduce-implementation].
+In practice, iterating over lists and other enumerable data structures is most often done using the [`Enum`](https://hexdocs.pm/elixir/Enum.html) module. Under the hood, functions from the `Enum` module are [implemented using recursion](https://github.com/elixir-lang/elixir/blob/291ebf7458bb588be64e0a65afc1b9fd51ebc4dc/lib/elixir/lib/enum.ex#L3767-L3768).
 
 Yet, there is other use case of a `for` which are list comprehensions
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 for n <- [1, 2, 3, 4], do: n * n
-=> [1, 4, 9, 16]
+# => [1, 4, 9, 16]
 
 for n <- 1..4, do: n * n
-=> [1, 4, 9, 16]
+# => [1, 4, 9, 16]
 ```
 
 `for` also support pattern matching on the left-hand side; all non-matching patterns are ignored.
 
-<!-- livebook:{"force_markdown":true} -->
-
 ```elixir
 values = [good: 1, good: 2, bad: 3, good: 4]
 for {:good, n} <- values, do: n * n
-=> [1, 4, 16]
+# => [1, 4, 16]
 ```
 
 ## Exercise - Birds Count
